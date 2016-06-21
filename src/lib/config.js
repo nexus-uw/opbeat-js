@@ -6,6 +6,8 @@ function Config () {
     VERSION: '%%VERSION%%',
     apiHost: 'intake.opbeat.com',
     isInstalled: false,
+    isIonicApp: false,
+    ionicBaseAppDirectory: null,
     logLevel: 'warn',
     orgId: null,
     appId: null,
@@ -14,7 +16,7 @@ function Config () {
       enable: true,
       enableStackFrames: false
     },
-    libraryPathPattern: '(node_modules|bower_components|webpack)',
+    libraryPathPattern: '(node_modules|bower_components|webpack|lib)',
     context: {
       user: {},
       extra: null
@@ -25,6 +27,13 @@ function Config () {
   var shouldGenerateStackFrames = utils.getRandomInt(0, 10) === 1
   if (shouldGenerateStackFrames) {
     this.defaults.performance.enableStackFrames = shouldGenerateStackFrames
+  }
+
+  if (window.ionic) {
+    this.defaults.isIonicApp = true;
+    this.defaults.ionicBaseAppDirectory = '/www/';
+    // always enable stack frames on mobile
+    this.defaults.performance.enableStackFrames = true;
   }
 }
 

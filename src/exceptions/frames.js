@@ -53,6 +53,14 @@ module.exports = {
         fileName = '(inline script)'
       }
 
+      // if the app we are running is an ionic app and we can reduce the filename
+      // chop the filename down to the base directory to remove extra-long
+      // device-specific paths 
+      var baseDirectoryIndex = -1
+      if (config.get('isIonicApp') && fileName && (baseDirectoryIndex = fileName.indexOf(config.get('ionicBaseAppDirectory'))) !== -1) {
+        fileName = fileName.substring(baseDirectoryIndex + 1);
+      }
+
       // Build Opbeat frame data
       var frame = {
         'filename': fileName,
@@ -160,6 +168,13 @@ module.exports = {
       level: null,
       logger: null,
       machine: null
+    }
+
+    // if it's an ionic app, we want to remove the http section
+    // so that the intake will accept the error
+    if (config.get('isIonicApp')) {
+      data.http = null
+      logger.log('opbeat.exceptions.processOpbeatException', 'Removed HTTP data before sending Ionic error')
     }
 
     data.extra = this.getBrowserSpecificMetadata()
