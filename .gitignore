@@ -1,4 +1,5 @@
 node_modules
+bower_components/
 .DS_Store
 aws.json
 .awspublish-opbeat-js-cdn

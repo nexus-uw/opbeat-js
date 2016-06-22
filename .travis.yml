@@ -3,6 +3,9 @@ language: node_js
 node_js:
 - '4'
 
+install:
+  - sudo npm install -g bower
+
 env:
   global:
     - SAUCE_USERNAME=opbeat
