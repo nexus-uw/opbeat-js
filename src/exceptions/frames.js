@@ -55,10 +55,10 @@ module.exports = {
 
       // if the app we are running is an ionic app and we can reduce the filename
       // chop the filename down to the base directory to remove extra-long
-      // device-specific paths 
+      // device-specific paths
       var baseDirectoryIndex = -1
       if (config.get('isIonicApp') && fileName && (baseDirectoryIndex = fileName.indexOf(config.get('ionicBaseAppDirectory'))) !== -1) {
-        fileName = fileName.substring(baseDirectoryIndex + 1);
+        fileName = fileName.substring(baseDirectoryIndex + 1)
       }
 
       // Build Opbeat frame data

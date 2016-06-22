@@ -30,10 +30,10 @@ function Config () {
   }
 
   if (window.ionic) {
-    this.defaults.isIonicApp = true;
-    this.defaults.ionicBaseAppDirectory = '/www/';
+    this.defaults.isIonicApp = true
+    this.defaults.ionicBaseAppDirectory = '/www/'
     // always enable stack frames on mobile
-    this.defaults.performance.enableStackFrames = true;
+    this.defaults.performance.enableStackFrames = true
   }
 }
 
