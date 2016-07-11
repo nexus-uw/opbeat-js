@@ -5,6 +5,13 @@ config.capabilities = [
     maxInstances: 1,
     'platform': 'Windows 7',
     'version': '9.0'
+  },
+  {
+    browserName: 'Safari',
+    maxInstances: 1,
+    'platformName': 'iOS',
+    'deviceName': 'iPhone 5s',
+    'platformVersion': '8.4'
   }
 ]
 
